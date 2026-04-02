@@ -1,0 +1,40 @@
+apiVersion: newide.studio.dataleap.volc/v1
+kind: Pipeline
+metadata:
+  name: zyj
+spec:
+  activities:
+    - name: zyj
+      type: execute_notebook
+      description: A new Notebook job
+      source: WORKSPACE
+      path: /Workspace/User/leaptest1/zyj_workspace/dev-test/zyj.ipynb
+      kernelType: k8s
+      engineQueue: ''
+      computingResourceGroupName: ''
+      sparkConf: []
+      executeParam:
+        image:
+          imageUrl: ''
+        cpuCores: 1
+        memoryMb: 4096
+      parameters: []
+      resources: []
+      metadata:
+        position:
+          x: 0
+          'y': 40
+      position:
+        x: 120
+        'y': 0
+  runAs: ''
+  trigger:
+    type: SCHEDULED
+    pauseStatus: UNPAUSED
+    frequency: daily
+    cronExpression: 11 00 * * *
+    priority: d5
+  displayName: zyj
+  description: A Pipeline for the new Notebook job
+  schedulingResourceGroupName: lyt_test
+  schedulingResourceGroupId: 1106
