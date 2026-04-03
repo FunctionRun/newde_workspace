@@ -1,0 +1,41 @@
+apiVersion: newide.studio.dataleap.volc/v1
+kind: Pipeline
+metadata:
+  name: my_test
+spec:
+  activities:
+    - name: my_test
+      type: execute_notebook
+      description: A new Notebook job
+      source: WORKSPACE
+      path: /Workspace/User/leaptest1/developer/my_test.ipynb
+      kernelType: emr_serverless_spark_python
+      engineQueue: 公共队列-Default
+      computingResourceGroupName: 公共计算资源组
+      sparkConf: []
+      executeParam:
+        image:
+          imageUrl: ''
+        cpuCores: 1
+        memoryMb: 4096
+      parameters: []
+      resources: []
+      metadata:
+        position:
+          x: 0
+          'y': 40
+      position:
+        x: 120
+        'y': 0
+      computingResourceGroupId: 1062
+  runAs: ''
+  trigger:
+    type: SCHEDULED
+    pauseStatus: UNPAUSED
+    frequency: daily
+    cronExpression: 11 00 * * *
+    priority: d5
+  displayName: my_test
+  description: A Pipeline for the new Notebook job
+  schedulingResourceGroupName: lyt_test
+  schedulingResourceGroupId: 1106
